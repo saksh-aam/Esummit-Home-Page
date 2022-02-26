@@ -1,10 +1,10 @@
 import React from "react";
-// import "./About.css";
+import "./About.css";
 const About = () => {
   return (
     <>
       <div className="aboutMain">
-        <h1 id="heading">ABOUT US</h1>
+        <h1 id="heading">ABOUT </h1>
         <div id="outer">
           <p id="maintext">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis

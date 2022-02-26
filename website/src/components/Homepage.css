@@ -76,8 +76,8 @@ body {
   .lines {
     object-fit: contain;
     bottom: 0%;
-    height: 100vh;
-    width: 100vw;
+    height: 90%;
+    width: 100%;
     z-index: 3;
     position: absolute;
     mix-blend-mode: color-dodge;

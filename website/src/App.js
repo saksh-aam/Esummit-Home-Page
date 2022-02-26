@@ -14,6 +14,7 @@ function App() {
         <Homepage />
       </div>
       <About />
+      {/* <Section /> */}
     </>
   );
 }
