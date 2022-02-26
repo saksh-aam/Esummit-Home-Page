@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Homepage.css";
-import linesanddots from "./images/linesanddots.png";
-import globe from "./images/dots.png";
-import shine from "./images/shine.png";
-import chatbot from "./images/Chatbot.png";
+import linesanddots from "../images/linesanddots.png";
+import globe from "../images/dots.png";
+import shine from "../images/shine.png";
+import chatbot from "../images/Chatbot.png";
+import NavBar from "./NavBar";
 
 export default function Homepage() {
   const preScrollY = useRef(0);
@@ -33,7 +34,7 @@ export default function Homepage() {
   let text = document.getElementById("text");
   window.addEventListener("scroll", function () {});
   return (
-    <div className="Main">
+    <div className="">
       <div id="banner">
         <span id="text">E-SUMMIT</span>
       </div>

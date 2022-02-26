@@ -2,18 +2,18 @@ body {
   font-size: 100%;
 }
 .Main {
-  background-image: url("./images/bg.png");
+  background-image: url("../images/bg.png");
   background-size: cover;
-  height: 110vh;
+  height: 100vh;
   width: 100%;
   top: 0%;
   z-index: -2;
-  position: absolute;
+  /* position: absolute; */
   overflow: hidden;
 }
 @font-face {
   font-family: heading;
-  src: url("./fonts/METAG___.TTF");
+  src: url("../fonts/METAG___.TTF");
 }
 
 #banner {
