@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import "./Homepage.css";
 import linesanddots from "./images/linesanddots.png";
 import globe from "./images/dots.png";
@@ -20,31 +20,29 @@ export default function Homepage() {
       }
       preScrollY.current = currentScrollY;
       let value = window.scrollY;
-      text.style.top = value * 2.25 + 'px';
+      text.style.top = value * 2.25 + "px";
       text.style.opacity = 1 - value / 50;
       text.style.zIndex = 1;
-    text.style.transitionTimingFunction = "ease-in-out";
+      text.style.transitionTimingFunction = "ease-in-out";
     };
-    window.addEventListener('scroll', handleScroll);
-    
-    return ()=> window.removeEventListener('scroll',handleScroll)
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [goingUp]);
 
-  let text = document.getElementById('text');
-    window.addEventListener('scroll', function () {
-      
-    });
+  let text = document.getElementById("text");
+  window.addEventListener("scroll", function () {});
   return (
-          <div className='Main'>
-        <div id='banner'>
-          <span id="text">E-SUMMIT</span>
-              </div>
-                <div className='images'>
-                  <img className='lines' src={linesanddots} alt="linesanddots"/>
-                  <img className='globe' src={globe} alt="globe"/>
-                  <img className='shine' src={shine} alt="Shine"/>
-                  <img className='chatbot' src={chatbot} alt="Chatbot"/>
-                </div>
-          </div>
-  )
+    <div className="Main">
+      <div id="banner">
+        <span id="text">E-SUMMIT</span>
+      </div>
+      <div className="images">
+        <img className="lines" src={linesanddots} alt="linesanddots" />
+        <img className="globe" src={globe} alt="globe" />
+        <img className="shine" src={shine} alt="Shine" />
+        <img className="chatbot" src={chatbot} alt="Chatbot" />
+      </div>
+    </div>
+  );
 }

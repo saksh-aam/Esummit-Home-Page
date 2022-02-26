@@ -3,6 +3,7 @@ body {
 }
 .Main {
   background-image: url("./images/bg.png");
+  background-size: cover;
   height: 110vh;
   width: 100%;
   top: 0%;
