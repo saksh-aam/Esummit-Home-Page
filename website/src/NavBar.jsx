@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import "./NavBar2.css";
+import "./NavBar.css";
 
-function App() {
-  return <Nav />;
-}
-
-export default App;
-
-function Nav() {
+function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -160,4 +154,4 @@ function Nav() {
   );
 }
 
-// export default Nav;
+export default NavBar;

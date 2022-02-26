@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import Homepage from "./Homepage";
-import Nav from "./NavBar2";
+import NavBar from "./NavBar";
 
 function App() {
   let routes = useRoutes([{ path: "/", element: <Homepage /> }]);
@@ -10,8 +10,9 @@ function App() {
 const Appwrapper = () => {
   return (
     <Router>
-      <Nav />
+      <NavBar />
       <App />
+      {/* <Section /> */}
     </Router>
   );
 };
