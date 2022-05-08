@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Homepage.css";
-import linesanddots from "../images/linesanddots.png";
-import globe from "../images/dots.png";
-import shine from "../images/shine.png";
-import chatbot from "../images/Chatbot.png";
-import NavBar from "./NavBar";
+import "./HomePage.css";
 
 export default function Homepage() {
   const preScrollY = useRef(0);
@@ -21,20 +16,20 @@ export default function Homepage() {
       }
       preScrollY.current = currentScrollY;
       let value = window.scrollY;
-      animate.style.top = value * 3 + "px";
+      animate.style.top = value * 2.5 + "px";
       animate.style.opacity = 1 - value / 50;
-      animate.style.zIndex = 1;
-      animate.style.transitionTimingFunction = "ease-in-out";
-      value>0?btn.style.visibility = "hidden":btn.style.visibility = "visible";
+      animate.style.transition = "0.7s";
     };
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [goingUp]);
+  let animate = document.getElementById("animate");
+  let text = document.getElementById("text");
 
   const countdown = () => {
-    const countDate = new Date("Feburary 28, 2022 00:00:00").getTime();
-    console.log(countDate);
+    const countDate = new Date("March 18, 2022 23:59:59").getTime();
+    // console.log(countDate);
     const now = new Date().getTime();
     const gap = countDate - now;
 
@@ -43,59 +38,129 @@ export default function Homepage() {
     const hour = minute * 60;
     const day = hour * 24;
 
-    const textDay = Math.floor(gap / day);
-    const textHour = Math.floor((gap % day) / hour);
-    const textMinute = Math.floor((gap % hour) / minute);
-    const textSecond = Math.floor((gap % minute) / second);
+    var textDay = Math.floor(gap / day);
+    textDay = textDay < 10 ? "0" + textDay : textDay;
+    var textHour = Math.floor((gap % day) / hour);
+    textHour = textHour < 10 ? "0" + textHour : textHour;
+    var textMinute = Math.floor((gap % hour) / minute);
+    textMinute = textMinute < 10 ? "0" + textMinute : textMinute;
+    var textSecond = Math.floor((gap % minute) / second);
+    textSecond = textSecond < 10 ? "0" + textSecond : textSecond;
 
-    document.querySelector(".day-time").innerText = textDay;
-    document.querySelector(".hour-time").innerText = textHour;
-    document.querySelector(".minute-time").innerText = textMinute;
-    document.querySelector(".second-time").innerText = textSecond;
+    if (gap < 0) {
+      clearInterval();
+    } else {
+      document.querySelector(".day-time").innerText = textDay;
+      document.querySelector(".hour-time").innerText = textHour;
+      document.querySelector(".minute-time").innerText = textMinute;
+      document.querySelector(".second-time").innerText = textSecond;
+    }
   };
-  setInterval(countdown, 1000);
-  let animate = document.getElementById("animate");
-  let btn = document.getElementById("btn");
-  window.addEventListener("scroll", function () { });
-  
+  useEffect(() => {
+    setInterval(countdown, 1000);
+    return () => {
+      clearInterval();
+    };
+  });
+  let vid = document.getElementById("popup");
+  let ytvid = document.getElementById("ytvid");
+  let close = document.getElementsByClassName("close");
+  function Show() {
+    vid.style.visibility = "visible";
+  }
+  function Hide() {
+    var iframe = popup.getElementsByTagName("iframe")[0];
+    var url = iframe.getAttribute("src");
+    iframe.setAttribute("src", "");
+    iframe.setAttribute("src", url);
+    vid.style.visibility = "hidden";
+  }
   return (
-    <div className="">
+    <div className="Main">
       <div id="animate">
         <div id="banner">
-          <span id="text">E-SUMMIT</span>
-          <div id="countdown">
-            <div class="count">
-              <h3 class="Day day-time">Day</h3>
-              <h3 class="Day">Day</h3>
+          <div id="links" className="dance">
+            <div id="youtube">
+              <img src="https://i.ibb.co/41tFkn9/play.png" className="icons" />
+              <a className="hov" href="javascript:void(0)" onClick={Show}>
+                <span className="linktxt">Watch Teaser</span>
+              </a>
             </div>
-            <div class="count">
-              <h3 class="Hour hour-time">Hour</h3>
-              <h3 class="Hour">Hour</h3>
+            <div id="reminder">
+              <img
+                src="https://i.ibb.co/W5ghnbk/calender.png"
+                className="icons"
+              />
+              <a className="hov" href="#">
+                <span className="linktxt">19-27 March'22</span>
+              </a>
             </div>
-            <div class="count">
-              <h3 class="Minute minute-time">Minute</h3>
-              <h3 class="Minute">Min</h3>
+            <div id="discord">
+              <img
+                src="https://i.ibb.co/DCVmtJF/discord.png"
+                className="icons"
+              />
+              <a className="hov" href="https://discord.gg/ASDahbGy" target="blank">
+                <span className="linktxt">Join Discord</span>
+              </a>
             </div>
-            <div class="count">
-              <h3 class="Second second-time">Second</h3>
-              <h3 class="Second">Sec</h3>
-            </div>
+          </div>
+          <span id="text" className="dance">
+            E-SUMMIT
+          </span>
+        </div>
+      </div>
+      <div id="popup">
+        <iframe
+          width="560"
+          className="ytvideo"
+          height="315"
+          src="https://www.youtube.com/embed/65SudyBdaxk"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+        <button id="close" onClick={Hide}>
+          X
+        </button>
+      </div>
+      <div id="btndiv" className="">
+        <div id="countdown">
+          <div className="count">
+            <h3 className="Day day-time">00</h3>
+            <h3 className="Daytxt">DAYS</h3>
+          </div>
+          <div className="count">
+            <h3 className="Hour hour-time">00</h3>
+            <h3 className="Hourtxt">HR</h3>
+          </div>
+          <div className="count">
+            <h3 className="Minute minute-time">00</h3>
+            <h3 className="Minutetxt">MIN</h3>
+          </div>
+          <div className="count">
+            <h3 className="Second second-time">00</h3>
+            <h3 className="Secondtxt">SEC</h3>
           </div>
         </div>
       </div>
-      <div id='btndiv'>
-        <button
-                  type="submit" id='btn'
-                  className="text-white border-2 hover:bg-white border-white hover:text-black font-semibold rounded-full m-2 p-2 px-3"
-                >
-                  REGISTER NOW
-                </button>
-        </div>
-      <div className="images">
-        <img className="lines" src={linesanddots} alt="linesanddots" />
-        <img className="globe" src={globe} alt="globe" />
-        <img className="shine" src={shine} alt="Shine" />
-        <img className="chatbot" src={chatbot} alt="Chatbot" />
+      <div className="images ">
+        <img
+          className="lines "
+          src="https://i.ibb.co/YWw4pdD/linesanddots.png"
+          alt="linesanddots"
+        />
+        <img
+          className="globe"
+          src="https://i.ibb.co/kMKFM6y/dots.png"
+          alt="globe"
+        />
+        <img
+          className="shine"
+          src="https://i.ibb.co/gVn5KVJ/shine.png"
+          alt="Shine"
+        />
       </div>
     </div>
   );
